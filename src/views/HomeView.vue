@@ -1,6 +1,7 @@
 <script setup>
     import { onMounted, ref, reactive, computed } from 'vue';
     import Posts from '../components/Posts.vue'
+    import { api } from '@/ky'
 
     const posts = ref([])
 
@@ -12,12 +13,7 @@
     });
 
     onMounted(() => {
-        fetch('https://backend.test/api/posts', {
-            method: 'GET',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-        }).then(response => response.json())
+        api.get('api/posts').then(response => response.json())
         .then(data => {
             posts.value = data;
             paginate.totalPages = Math.ceil(data.length / paginate.perPage);
