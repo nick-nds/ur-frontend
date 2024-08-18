@@ -24,7 +24,7 @@
 <template>
     <section v-if="Object.keys(post).length > 0" class="container mx-auto mt-5">
       <h2 class="text-2xl font-bold text-blue-600">{{ postId }}. {{ post.title }}</h2>
-      <p class="text-gray-600 mt-5">{{ post.content }}</p>
+      <p v-html="post.content" class="text-gray-600 mt-5"></p>
       <div v-if="post.user.id == user.user.id" class="flex mt-10">
           <button class="px-6 py-2 border border-2 border-blue-500 rounded-md mr-4 flex group hover:bg-blue-500 hover:border-white">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-4 fill-blue-700 cursor-pointer group-hover:fill-white" fill="currentColor" viewBox="0 0 512 512">
